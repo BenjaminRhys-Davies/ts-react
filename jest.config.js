@@ -4,7 +4,7 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   coverageDirectory: './coverage',
-  collectCoverageFrom: ['src/**/*.{js,ts}', '!**/node_modules/**', '!**/build/**', '!**/coverage/**'],
+  collectCoverageFrom: ['src/**/*.{js,ts}', '!**/node_modules/**', '!**/build/**', '!**/coverage/**', '!**/scripts/**'],
   modulePaths: ['./'],
   testMatch: ['**/*.{test,spec}.ts'],
 };

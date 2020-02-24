@@ -1,20 +1,36 @@
 {
   "compilerOptions": {
-    "typeRoots": [
-      "node_modules/@types",
-      "@types"
-    ],
-    "sourceMap": true,
-    "target": "es2017",
+    "allowJs": true,
     "alwaysStrict": true,
-    "noImplicitAny": true,
+    "declaration": true,
     "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
     "outDir": "build",
-    "rootDir": "src"
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es5",
+    "jsx": "react",
+    "typeRoots": [
+      "@types",
+      "node_modules/@types"
+    ]
   },
+  "include": [
+    "src"
+  ],
   "exclude": [
-    "node_modules",
     "build",
-    "coverage"
+    "config",
+    "coverage",
+    "node_modules"
   ]
 }
