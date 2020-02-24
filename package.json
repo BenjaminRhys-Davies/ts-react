@@ -1,5 +1,5 @@
 {
-  "name": "ts-jest",
+  "name": "ts-react",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:BenjaminRhys-Davies/ts-jest.git"
+    "url": "git@github.com:BenjaminRhys-Davies/ts-react.git"
   },
   "private": true,
   "keywords": [],
