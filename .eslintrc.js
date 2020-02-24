@@ -1,50 +1,92 @@
 module.exports = {
-  env: {
-    browser: true,
-    es6: true,
-    jest: true,
-  },
-  extends: [
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:sonarjs/recommended',
-    'prettier/@typescript-eslint',
-    'plugin:prettier/recommended',
-  ],
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
-  },
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
-    project: './tsconfig.json',
-  },
   plugins: [
     '@typescript-eslint',
-    'sonarjs',
+    'eslint-comments',
+    'jest',
+    'promise',
   ],
+  extends: [
+    'airbnb-typescript',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:eslint-comments/recommended',
+    'plugin:jest/recommended',
+    'plugin:promise/recommended',
+    'prettier',
+    'prettier/react',
+    'prettier/@typescript-eslint',
+  ],
+  env: {
+    node: true,
+    browser: true,
+    jest: true,
+  },
+  parserOptions: {
+    ecmaVersion: 6,
+    project: './tsconfig.json',
+    sourceType: 'module',
+  },
   rules: {
-    indent: [2, 2, { 'SwitchCase': 1 }],
+    // Too restrictive, writing ugly code to defend against a very unlikely scenario: https://eslint.org/docs/rules/no-prototype-builtins
+    'no-prototype-builtins': 'off',
+    // https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html
+    'import/prefer-default-export': 'off',
+    'import/no-default-export': 'error',
+    // Too restrictive: https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/destructuring-assignment.md
+    'react/destructuring-assignment': 'off',
+    // No jsx extension: https://github.com/facebook/create-react-app/issues/87#issuecomment-234627904
+    'react/jsx-filename-extension': 'off',
+    // Use function hoisting to improve code readability
+    'no-use-before-define': [
+      'error',
+      {
+        functions: false,
+        classes: true,
+        variables: true,
+      },
+    ],
+    // Makes no sense to allow type inferrence for expression parameters, but require typing the response
+    '@typescript-eslint/explicit-function-return-type': [
+      'error',
+      {
+        allowExpressions: true,
+        allowTypedFunctionExpressions: true,
+      },
+    ],
+    '@typescript-eslint/indent': ['error', 2],
+    '@typescript-eslint/explicit-member-accessibility': [
+      'error',
+      {
+        accessibility: 'no-public',
+        overrides: {
+          properties: 'explicit',
+        },
+      }
+    ],
+    'multiline-ternary': ['error', 'always-multiline'],
+    'prefer-destructuring': [
+      'error',
+      {
+        array: true,
+        object: true,
+      },
+      {
+        enforceForRenamedProperties: false,
+      },
+    ],
+    'react/display-name': 0
   },
   overrides: [
     {
-      files: [
-        '*.test.js',
-        '*.test.ts'
-      ],
+      files: ['*.styled.ts'],
       rules: {
-        'sonarjs/no-identical-expressions': [0],
-        'sonarjs/no-identical-functions': [0],
-        'sonarjs/no-duplicate-string': [0],
+        // Enable nested ternary declarations for simple logic, styled components
+        'no-nested-ternary': 'off',
       },
     },
   ],
   settings: {
-    'import/resolver': {
-      es6: {
-        extensions: ['.ts'],
-      },
+    react: {
+      version: 'detect',
     },
   },
 };

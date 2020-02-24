@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "checkJs": true,
     "alwaysStrict": true,
     "baseUrl": ".",
     "declaration": true,
@@ -11,7 +12,6 @@
       "esnext"
     ],
     "moduleResolution": "node",
-    "newLine": "lf",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
