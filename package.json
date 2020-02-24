@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clean": "npm run test -- --clearCache",
     "lint": "./node_modules/.bin/eslint ./src/**",
     "start": "ts-node ./src/index.ts",
     "start:watch": "nodemon",
